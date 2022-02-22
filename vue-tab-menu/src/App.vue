@@ -1,50 +1,40 @@
 <template>
     <div id="app">
         <TabNav
-            :tabs="['Home', 'Setting', 'Profile']"
+            :tabs="['Home', 'Settings', 'Profile']"
             :selected="selected"
-            @selected="setSelected"
-        >
-            <Tab :isSelected="selected === 'Home'">
-                <p>Some test text</p>
+            @selected="setSelected">
 
+            <Tab :isSelected="selected === 'Home'">
+                <p>This is Home</p>
             </Tab>
             <Tab :isSelected="selected === 'Settings'">
-                <h1>more test text</h1>
+                <p>This is Settings</p>
             </Tab>
             <Tab :isSelected="selected === 'Profile'">
-                <ul>
-                    <li>list test1</li>
-                    <li>list test2</li>
-                    <li>list test3</li>
-                    <li>list test4</li>
-                </ul>
+                <p>This is Profile</p>
             </Tab>
-
         </TabNav>
-
     </div>
 </template>
 
 <script>
-
-import TabNav from "@/components/TabNav";
-import Tab from "@/components/Tab";
+import TabNav from "./components/TabNav";
+import Tab from "./components/Tab";
 
 export default {
-    name: 'App',
     data(){
-      return{
-          selected:'Home'
-      }
+        return{
+            selected:'Home'
+        }
     },
-    components: {
+    components:{
         Tab,
         TabNav
     },
     methods:{
         setSelected(tab){
-            this.selected = tab;
+            this.selected=tab;
         }
     }
 }

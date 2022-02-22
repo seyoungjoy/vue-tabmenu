@@ -1,23 +1,24 @@
 <template>
-    <div style="width:30%">
+    <div style="width:50%">
         <ul class="nav nav-tabs">
-            <li v-for="tab in tabs" :key="tab" class="nav-item">
-                <a class="nav-link"
-                   :class="{active:tab === selected}"
-                    @click="setTab(tab)"
-                ></a>
-<!--                tab이랑 selected랑 같을 때 active클래스를 바인딩해줘라.-->
-                {{tab}}
+            <li
+                v-for="(tab,idx) in tabs"
+                :key="idx"
+                class="nav-item">
+                <a
+                    class="nav-link"
+                    :class="{active:tab===selected}"
+                    @click="setTab(tab)">
+                    {{tab}}
+                </a>
             </li>
-        </ul>
 
+        </ul>
         <slot></slot>
     </div>
-
 </template>
-
 <script>
-export default {
+export default{
     props:{
         tabs:{
             type:Array,
@@ -25,20 +26,20 @@ export default {
         },
         selected:{
             type:String,
-            required: true,
+            required:true,
         }
     },
     methods:{
         setTab(tab){
             this.$emit('selected', tab);
-
         }
     }
-
 }
 
 </script>
-
 <style scoped>
+.nav-link.active{
+    color:red;
+}
 
 </style>
